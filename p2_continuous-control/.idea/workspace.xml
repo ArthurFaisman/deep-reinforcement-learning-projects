@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8b8522a4-d31a-4d4c-af51-8a083a752fad" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Continuous_Control.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Continuous_Control.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_reacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_reacher.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JupyterTrust" id="0081f0ba-e635-4626-890c-2ae060771479" />
+  <component name="ProjectId" id="1fwy0pC43xe0Am2Q0Y0RWMZzJcf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.ddpg_continuous_action">
+    <configuration name="ddpg_continuous_action" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="p2_continuous-control" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ddpg_continuous_action.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_reacher" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="p2_continuous-control" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_reacher.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.ddpg_continuous_action" />
+        <item itemvalue="Python.train_reacher" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8b8522a4-d31a-4d4c-af51-8a083a752fad" name="Default Changelist" comment="" />
+      <created>1597143229544</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597143229544</updated>
+      <workItem from="1597143230813" duration="34142000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="304" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597280780622">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="304" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1597280780622" />
+    <state width="1680" height="438" key="DebuggerActiveHint" timestamp="1597500234100">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1680" height="438" key="DebuggerActiveHint/0.0.1680.1050@0.0.1680.1050" timestamp="1597500234100" />
+    <state x="748" y="302" key="FileChooserDialogImpl" timestamp="1597143284801">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="748" y="302" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1597143284801" />
+    <state width="1878" height="371" key="GridCell.Tab.0.bottom" timestamp="1597609665648">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="422" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1597508398773" />
+    <state width="1878" height="371" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597609665648" />
+    <state width="1878" height="371" key="GridCell.Tab.0.bottom/0.23.1920.977@0.23.1920.977" timestamp="1597606384157" />
+    <state width="1878" height="371" key="GridCell.Tab.0.center" timestamp="1597609665647">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="422" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1597508398771" />
+    <state width="1878" height="371" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597609665647" />
+    <state width="1878" height="371" key="GridCell.Tab.0.center/0.23.1920.977@0.23.1920.977" timestamp="1597606384152" />
+    <state width="1878" height="371" key="GridCell.Tab.0.left" timestamp="1597609665646">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="422" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1597508398770" />
+    <state width="1878" height="371" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597609665646" />
+    <state width="1878" height="371" key="GridCell.Tab.0.left/0.23.1920.977@0.23.1920.977" timestamp="1597606384150" />
+    <state width="1878" height="371" key="GridCell.Tab.0.right" timestamp="1597609665647">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="422" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1597508398772" />
+    <state width="1878" height="371" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597609665647" />
+    <state width="1878" height="371" key="GridCell.Tab.0.right/0.23.1920.977@0.23.1920.977" timestamp="1597606384155" />
+    <state width="1878" height="371" key="GridCell.Tab.1.bottom" timestamp="1597609665650">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="264" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1597498671735" />
+    <state width="1878" height="371" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597609665650" />
+    <state width="1878" height="371" key="GridCell.Tab.1.bottom/0.23.1920.977@0.23.1920.977" timestamp="1597606383983" />
+    <state width="1878" height="371" key="GridCell.Tab.1.center" timestamp="1597609665649">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="264" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1597498671733" />
+    <state width="1878" height="371" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597609665649" />
+    <state width="1878" height="371" key="GridCell.Tab.1.center/0.23.1920.977@0.23.1920.977" timestamp="1597606383982" />
+    <state width="1878" height="371" key="GridCell.Tab.1.left" timestamp="1597609665648">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="264" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1597498671732" />
+    <state width="1878" height="371" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597609665648" />
+    <state width="1878" height="371" key="GridCell.Tab.1.left/0.23.1920.977@0.23.1920.977" timestamp="1597606383981" />
+    <state width="1878" height="371" key="GridCell.Tab.1.right" timestamp="1597609665649">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="264" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1597498671734" />
+    <state width="1878" height="371" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597609665649" />
+    <state width="1878" height="371" key="GridCell.Tab.1.right/0.23.1920.977@0.23.1920.977" timestamp="1597606383982" />
+    <state x="403" y="174" key="SettingsEditor" timestamp="1597450409336">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="403" y="174" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1597450409336" />
+    <state x="461" y="179" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1597321753190" />
+    <state x="912" y="0" width="768" height="1050" key="dock-window-1" timestamp="1597191551870">
+      <screen x="0" y="23" width="1680" height="947" />
+    </state>
+    <state x="846" y="0" width="834" height="1050" key="dock-window-1/0.0.1680.1050@0.0.1680.1050" timestamp="1597190944248" />
+    <state x="950" y="0" width="970" height="1080" key="dock-window-1/0.0.1920.1080@0.0.1920.1080" timestamp="1597150230562" />
+    <state x="912" y="0" width="768" height="1050" key="dock-window-1/0.23.1680.947@0.23.1680.947" timestamp="1597191551870" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/p2_continuous_control$train_reacher.coverage" NAME="train_reacher Coverage Results" MODIFIED="1597588739522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/p2_continuous_control$ddpg_continuous_action.coverage" NAME="ddpg_continuous_action Coverage Results" MODIFIED="1597606383935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
