@@ -7,14 +7,12 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import torch.nn.functional as F
 from torch.utils.tensorboard import SummaryWriter
 
 from unityagents import UnityEnvironment
 
 import argparse
 from distutils.util import strtobool
-import collections
 import numpy as np
 import time
 import random
@@ -27,7 +25,7 @@ if __name__ == "__main__":
     # Common arguments
     parser.add_argument('--exp-name', type=str, default=os.path.basename(__file__).rstrip(".py"),
                         help='the name of this experiment')
-    parser.add_argument('--gym-id', type=str, default="HopperBulletEnv-v0",
+    parser.add_argument('--gym-id', type=str, default="MLAgents-Reacher",
                         help='the id of the gym environment')
     parser.add_argument('--learning-rate', type=float, default=3e-4,
                         help='the learning rate of the optimizer')
@@ -76,7 +74,6 @@ if __name__ == "__main__":
     if not args.seed:
         args.seed = int(time.time())
 
-# TRY NOT TO MODIFY: setup the environment
 experiment_name = f"{args.gym_id}__{args.exp_name}__{args.seed}__{int(time.time())}"
 writer = SummaryWriter(f"runs/{experiment_name}")
 writer.add_text('hyperparameters', "|param|value|\n|-|-|\n%s" % ('\n'.join([f"|{key}|{value}|" for key, value in vars(args).items()])))
@@ -90,19 +87,12 @@ if args.prod_mode:
                name=experiment_name, monitor_gym=True, save_code=True)
     writer = SummaryWriter(f"/tmp/{experiment_name}")
 
-# TRY NOT TO MODIFY: seeding
 device = torch.device('cuda' if torch.cuda.is_available() and args.cuda else 'cpu')
-
-#env = gym.make(args.gym_id)
-
 
 random.seed(args.seed)
 np.random.seed(args.seed)
 torch.manual_seed(args.seed)
 torch.backends.cudnn.deterministic = args.torch_deterministic
-
-
-
 
 uenv = UnityEnvironment(file_name='Reacher_Linux_Multi/Reacher.x86_64')
 brain_name = uenv.brain_names[0]
@@ -127,7 +117,8 @@ qf1_target.load_state_dict(qf1.state_dict())
 q_optimizer = optim.Adam(list(qf1.parameters()), lr=args.learning_rate)
 actor_optimizer = optim.Adam(list(actor.parameters()), lr=args.learning_rate)
 loss_fn = nn.MSELoss()
-# TRY NOT TO MODIFY: start the game
+
+
 env_info = uenv.reset(train_mode=True)[brain_name]
 states = env_info.vector_observations
 scores = np.zeros(num_agents)
@@ -188,11 +179,6 @@ while True:
             for param, target_param in zip(qf1.parameters(), qf1_target.parameters()):
                 target_param.data.copy_(args.tau * param.data + (1 - args.tau) * target_param.data)
 
-        #if global_step % 100 == 0:
-        #    writer.add_scalar("losses/qf1_loss", qf1_loss.item(), global_step)
-        #    writer.add_scalar("losses/actor_loss", actor_loss.item(), global_step)
-
-    # TRY NOT TO MODIFY: CRUCIAL step easy to overlook
     states = next_states
 
     if np.any(dones):
