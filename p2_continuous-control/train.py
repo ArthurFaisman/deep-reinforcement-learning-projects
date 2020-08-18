@@ -22,59 +22,31 @@ from helpers import ReplayBuffer, QNetwork, Actor
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='DDPG agent')
-    # Common arguments
-    parser.add_argument('--exp-name', type=str, default=os.path.basename(__file__).rstrip(".py"),
-                        help='the name of this experiment')
-    parser.add_argument('--gym-id', type=str, default="MLAgents-Reacher",
-                        help='the id of the gym environment')
-    parser.add_argument('--learning-rate', type=float, default=3e-4,
-                        help='the learning rate of the optimizer')
-    parser.add_argument('--seed', type=int, default=1,
-                        help='seed of the experiment')
-    parser.add_argument('--episode-length', type=int, default=0,
-                        help='the maximum length of each episode')
-    parser.add_argument('--total-episodes', type=int, default=2000,
-                        help='total episodes of the experiments')
-    parser.add_argument('--torch-deterministic', type=lambda x: bool(strtobool(x)), default=True, nargs='?', const=True,
-                        help='if toggled, `torch.backends.cudnn.deterministic=False`')
-    parser.add_argument('--cuda', type=lambda x: bool(strtobool(x)), default=True, nargs='?', const=True,
-                        help='if toggled, cuda will not be enabled by default')
     parser.add_argument('--prod-mode', type=lambda x: bool(strtobool(x)), default=False, nargs='?', const=True,
                         help='run the script in production mode and use wandb to log outputs')
-    parser.add_argument('--capture-video', type=lambda x: bool(strtobool(x)), default=False, nargs='?', const=True,
-                        help='weather to capture videos of the agent performances (check out `videos` folder)')
-    parser.add_argument('--wandb-project-name', type=str, default="cleanRL",
+    parser.add_argument('--wandb-project-name', type=str, default="cleanrlddpg",
                         help="the wandb's project name")
     parser.add_argument('--wandb-entity', type=str, default=None,
                         help="the entity (team) of wandb's project")
     parser.add_argument('--wandb-api-key', type=str, default=None,
                         help="the wandb API key")
 
-
-    # Algorithm specific arguments
-    parser.add_argument('--buffer-size', type=int, default=int(1e6),
-                        help='the replay memory buffer size')
-    parser.add_argument('--gamma', type=float, default=0.99,
-                        help='the discount factor gamma')
-    parser.add_argument('--tau', type=float, default=0.005,
-                        help="target smoothing coefficient (default: 0.005)")
-    parser.add_argument('--max-grad-norm', type=float, default=0.5,
-                        help='the maximum norm for the gradient clipping')
-    parser.add_argument('--batch-size', type=int, default=256,
-                        help="the batch size of sample from the reply memory")
-    parser.add_argument('--exploration-noise', type=float, default=0.1,
-                        help='the scale of exploration noise')
-    parser.add_argument('--learning-starts', type=int, default=5e3,
-                        help="timestep to start learning")
-    parser.add_argument('--policy-frequency', type=int, default=5,
-                        help="the frequency of training policy (delayed)")
-    parser.add_argument('--noise-clip', type=float, default=0.5,
-                        help='noise clip parameter of the Target Policy Smoothing Regularization')
     args = parser.parse_args()
-    if not args.seed:
-        args.seed = int(time.time())
 
-experiment_name = f"{args.gym_id}__{args.exp_name}__{args.seed}__{int(time.time())}"
+args.gym_id = "MLAgents-Reacher"
+args.buffer_size = int(1e6)
+args.gamma = 0.99
+args.tao = 0.005
+args.max_grad_norm = 0.5
+args.batch_size = 256
+args.exploration_noise = 0.1
+args.learning_starts = 5e3
+args.policy_frequency = 5
+args.noise_clip = 0.5
+args.total_episodes = 2000
+args.learning_rate = 3e-4
+
+experiment_name = f"{args.gym_id}__{int(time.time())}"
 writer = SummaryWriter(f"runs/{experiment_name}")
 writer.add_text('hyperparameters', "|param|value|\n|-|-|\n%s" % ('\n'.join([f"|{key}|{value}|" for key, value in vars(args).items()])))
 if args.prod_mode:
@@ -87,12 +59,9 @@ if args.prod_mode:
                name=experiment_name, monitor_gym=True, save_code=True)
     writer = SummaryWriter(f"/tmp/{experiment_name}")
 
-device = torch.device('cuda' if torch.cuda.is_available() and args.cuda else 'cpu')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-random.seed(args.seed)
-np.random.seed(args.seed)
-torch.manual_seed(args.seed)
-torch.backends.cudnn.deterministic = args.torch_deterministic
+torch.backends.cudnn.deterministic = True
 
 uenv = UnityEnvironment(file_name='Reacher_Linux_Multi/Reacher.x86_64')
 brain_name = uenv.brain_names[0]

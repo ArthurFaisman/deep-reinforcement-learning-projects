@@ -1,15 +1,13 @@
+# based on : https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/ddpg_continuous_action.py
+
 import torch
 import torch.nn as nn
-import torch.optim as optim
 import torch.nn.functional as F
 
-import argparse
-from distutils.util import strtobool
 import collections
 import numpy as np
 import time
 import random
-import os
 
 from typing import List, Any
 
