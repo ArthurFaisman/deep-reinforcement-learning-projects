@@ -2,6 +2,7 @@
 
 [image1]: https://user-images.githubusercontent.com/10624937/43851024-320ba930-9aff-11e8-8493-ee547c6af349.gif "Trained Agent"
 [image2]: https://user-images.githubusercontent.com/10624937/43851646-d899bf20-9b00-11e8-858c-29b5c2c94ccc.png "Crawler"
+[image_solvedenv]: wandb_solvedenv.png "Solved Env"
 
 
 # Project 2: Continuous Control
@@ -45,3 +46,10 @@ The environment is considered solved, when the average (over 100 episodes) of th
 The provided Dockerfile should be used to build the Python execution environment. Note that this environment is based on Nvidia CUDA image so should execute via GPU on any NVidia GPU-compatible Docker system. Also note that this serves as a *remote* execution environment - i.e. the resultant Docker image will not contain the executable Python scripts, but these Python scripts can be run on the execution environment. Please refer to your IDE for more details on how to enable this in your setup. 
 
 Additionally, note that the included Reacher environments are strictly the headless Linux ones intended for AWS in the documentation, since these are the ones which are compatible with Docker across all of the systems where this may be executed.
+
+In order to train the agent, please run the train.py file using the environment described above. Note that the environment comes provisioned with Weights and Biases so if the --prod-mode and --wandb-api-key command line arguments are passed in, then the training session will be uploaded to wandb. This is the best way to produce the plot of rewards per episode for the training session
+
+
+### Results
+The supplied code was able to train the agent as per the graph below
+![Solved Env][image_solvedenv]
