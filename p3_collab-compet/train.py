@@ -8,6 +8,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.tensorboard import SummaryWriter
+from collections import deque
 
 from unityagents import UnityEnvironment
 
@@ -33,17 +34,17 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-args.gym_id = "MLAgents-Reacher"
+args.gym_id = "MLAgents-Tennis"
 args.buffer_size = int(1e6)
 args.gamma = 0.99
-args.tao = 0.005
+args.tau = 0.005
 args.max_grad_norm = 0.5
 args.batch_size = 256
 args.exploration_noise = 0.1
 args.learning_starts = 5e3
 args.policy_frequency = 5
 args.noise_clip = 0.5
-args.total_episodes = 2000
+args.total_episodes = 6000
 args.learning_rate = 3e-4
 
 experiment_name = f"{args.gym_id}__{int(time.time())}"
@@ -93,6 +94,7 @@ states = env_info.vector_observations
 scores = np.zeros(num_agents)
 episode_num = 0
 global_step = 0
+scores_window = deque(maxlen=100)  # last 100 scores
 
 print("starting..")
 
@@ -155,11 +157,14 @@ while True:
         average_score = np.mean(scores)
         print(f"Total score (averaged over agents) for episode {episode_num} :\t {average_score}")
         writer.add_scalar("charts/episode_reward", average_score, episode_num)
+        scores_window.append(average_score)
         obs, scores = uenv.reset(train_mode=True)[brain_name], np.zeros(num_agents)
 
-        torch.save(actor.state_dict(), 'torch_model.save')
-
         if episode_num >= args.total_episodes:
+            break
+
+        if np.mean(scores_window) >= 0.5:
+            torch.save(actor.state_dict(), 'torch_model.save')
             break
 
 uenv.close()
