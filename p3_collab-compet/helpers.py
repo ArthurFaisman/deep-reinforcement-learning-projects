@@ -38,9 +38,9 @@ class ReplayBuffer():
 
 
 # ALGO LOGIC: initialize agent here:
-class QNetwork(nn.Module):
+class Critic(nn.Module):
     def __init__(self, device, action_size, observation_size):
-        super(QNetwork, self).__init__()
+        super(Critic, self).__init__()
         self.device = device
         self.fc1 = nn.Linear(
             np.array((observation_size,)).prod() + np.prod((action_size,)), 256)

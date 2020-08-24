@@ -19,7 +19,7 @@ import time
 import random
 import os
 
-from helpers import ReplayBuffer, QNetwork, Actor
+from helpers import ReplayBuffer, Critic, Actor
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='DDPG agent')
@@ -79,12 +79,12 @@ action_max = 1.0
 
 rb = ReplayBuffer(args.buffer_size)
 actor = Actor(device, action_size, state_size).to(device)
-qf1 = QNetwork(device, action_size, state_size).to(device)
-qf1_target = QNetwork(device, action_size, state_size).to(device)
+critic = Critic(device, action_size, state_size).to(device)
+critic_target = Critic(device, action_size, state_size).to(device)
 target_actor = Actor(device, action_size, state_size).to(device)
 target_actor.load_state_dict(actor.state_dict())
-qf1_target.load_state_dict(qf1.state_dict())
-q_optimizer = optim.Adam(list(qf1.parameters()), lr=args.learning_rate)
+critic_target.load_state_dict(critic.state_dict())
+critic_optimizer = optim.Adam(list(critic.parameters()), lr=args.learning_rate)
 actor_optimizer = optim.Adam(list(actor.parameters()), lr=args.learning_rate)
 loss_fn = nn.MSELoss()
 
@@ -124,21 +124,21 @@ while True:
             next_state_actions = (
                 target_actor.forward(s_next_obses)
             ).clamp(action_min, action_max)
-            qf1_next_target = qf1_target.forward(s_next_obses, next_state_actions)
-            next_q_value = torch.Tensor(s_rewards).to(device) + (1 - torch.Tensor(s_dones).to(device)) * args.gamma * (
-                qf1_next_target).view(-1)
+            critic_next_target = critic_target.forward(s_next_obses, next_state_actions)
+            next_critic_value = torch.Tensor(s_rewards).to(device) + (1 - torch.Tensor(s_dones).to(device)) * args.gamma * (
+                critic_next_target).view(-1)
 
-        qf1_a_values = qf1.forward(s_obs, torch.Tensor(s_actions).to(device)).view(-1)
-        qf1_loss = loss_fn(qf1_a_values, next_q_value)
+        critic_a_values = critic.forward(s_obs, torch.Tensor(s_actions).to(device)).view(-1)
+        critic_loss = loss_fn(critic_a_values, next_critic_value)
 
         # optimize the midel
-        q_optimizer.zero_grad()
-        qf1_loss.backward()
-        nn.utils.clip_grad_norm_(list(qf1.parameters()), args.max_grad_norm)
-        q_optimizer.step()
+        critic_optimizer.zero_grad()
+        critic_loss.backward()
+        nn.utils.clip_grad_norm_(list(critic.parameters()), args.max_grad_norm)
+        critic_optimizer.step()
 
         if global_step % args.policy_frequency == 0:
-            actor_loss = -qf1.forward(s_obs, actor.forward(s_obs)).mean()
+            actor_loss = -critic.forward(s_obs, actor.forward(s_obs)).mean()
             actor_optimizer.zero_grad()
             actor_loss.backward()
             nn.utils.clip_grad_norm_(list(actor.parameters()), args.max_grad_norm)
@@ -147,7 +147,7 @@ while True:
             # update the target network
             for param, target_param in zip(actor.parameters(), target_actor.parameters()):
                 target_param.data.copy_(args.tau * param.data + (1 - args.tau) * target_param.data)
-            for param, target_param in zip(qf1.parameters(), qf1_target.parameters()):
+            for param, target_param in zip(critic.parameters(), critic_target.parameters()):
                 target_param.data.copy_(args.tau * param.data + (1 - args.tau) * target_param.data)
 
     states = next_states
