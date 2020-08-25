@@ -35,16 +35,16 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
 args.gym_id = "MLAgents-Tennis"
-args.buffer_size = int(1e5)
+args.buffer_size = int(10000)
 args.gamma = 0.99
 args.tau = 1e-2
 args.max_grad_norm = 0.5
-args.batch_size = 64
-args.exploration_noise = 0.1
-args.learning_starts = 5e3
+args.batch_size = 128
+args.exploration_noise = 0.5 #0.1
+args.learning_starts = args.buffer_size
 args.policy_frequency = 5
 args.noise_clip = 0.5
-args.total_episodes = 6000
+args.total_episodes = 10000000
 args.learning_rate = 1e-4
 
 experiment_name = f"{args.gym_id}__{int(time.time())}"
